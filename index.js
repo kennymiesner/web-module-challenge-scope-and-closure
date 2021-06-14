@@ -28,11 +28,17 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+
+  counter1 is a function stored within a variable, while counter2 is the name of the function itself.
   
   2. Which of the two uses a closure? How can you tell?
+
+  counter1 uses a closure because it is reaching out side of the counter() function to get the base let count value.
   
-  3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+  3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?  
+
+  counter1 is more reusable.
+
 */
 
 // counter1 code
@@ -45,12 +51,16 @@ function counterMaker() {
 
 const counter1 = counterMaker();
 
+console.log(`Task 1: ${counter1()}`);
+
 // counter2 code
 let count = 0;
 
 function counter2() {
   return count++;
 }
+
+console.log(`Task 1: ${counter2()}`);
 
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
@@ -101,7 +111,7 @@ Use the scoreboard function below to do the following:
   2. Receive the callback function `inning` from Task 2
   3. Receive a number of innings to be played
   4. Return an array where each of it's index values equals a string stating the
-  Home and Away team's scores for each inning.  Not the cummulative score.
+  Home and Away team's scores for each inning.  Not the cumulative score.
   5. If there's a tie at the end of the innings, add this message containing the score to the end of the array:  "This game will require extra innings: Away 12 - Home 12"  (see tie example below)
      If there isn't a tie, add this message to the end of the array: "Final Score: Away 13 - Home 11"  (see no tie example below)
   
