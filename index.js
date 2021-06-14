@@ -95,11 +95,16 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/* Code Here */){
-  /* Code Here */
+function finalScore(inningCB, totalInnings){
+  for(let i = 0; i < totalInnings; i++) {
+    return {
+      Home: inningCB(),
+      Away: inningCB(),
+    }
+  }
 }
 
-console.log(`Task 3: ${finalScore(inning, 9)}`);
+console.log(`Task 3:`, finalScore(inning, 7));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -157,9 +162,11 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
+function scoreboard(getInningScore, inning, totalInnings) {
   /* CODE HERE */
 }
+
+console.log(`Task 5:`, scoreboard(getInningScore,inning, 9));
 
 
 
