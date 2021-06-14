@@ -95,16 +95,14 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(inningCB, totalInnings){
-  for(let i = 0; i < totalInnings; i++) {
-    return {
-      Home: inningCB(),
-      Away: inningCB(),
-    }
+function finalScore(scoreCB) {
+  return {
+    Home: scoreCB(),
+    Away: scoreCB()
   }
 }
 
-console.log(`Task 3:`, finalScore(inning, 7));
+console.log(`Task 3:`, finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -163,7 +161,16 @@ Use the scoreboard function below to do the following:
   */
 
 function scoreboard(getInningScore, inning, totalInnings) {
-  /* CODE HERE */
+  let totalGame = [];
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < totalInnings; i++) {
+    const currentScore = inning(getInningScore);
+    homeScore = homeScore + currentScore.Home
+    awayScore = awayScore + currentScore.Away
+    totalGame.push(`Inning ${i + 1}: Away: ${currentScore.Away} - Home: ${currentScore.Home}`);
+  }
+  return totalGame;
 }
 
 console.log(`Task 5:`, scoreboard(getInningScore,inning, 9));
