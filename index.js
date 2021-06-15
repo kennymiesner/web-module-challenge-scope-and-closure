@@ -95,11 +95,20 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(scoreCB) {
-  return {
-    Home: scoreCB(),
-    Away: scoreCB()
+function finalScore(inning, totalInnings){
+  let totalGame = [];
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < totalInnings; i++) {
+    const currentScore = getInningScore(inning);
+    homeScore = homeScore + currentScore.Home
+    awayScore = awayScore + currentScore.Away
+    totalGame.push(`Away: ${currentScore.Away} - Home: ${currentScore.Home}`);
   }
+  return  {
+    Away: awayScore,
+    Home: homeScore
+  };
 }
 
 console.log(`Task 3:`, finalScore(inning, 9));
@@ -165,10 +174,15 @@ function scoreboard(getInningScore, inning, totalInnings) {
   let homeScore = 0;
   let awayScore = 0;
   for(let i = 0; i < totalInnings; i++) {
-    const currentScore = inning(getInningScore);
+    const currentScore = getInningScore(inning);
     homeScore = homeScore + currentScore.Home
     awayScore = awayScore + currentScore.Away
     totalGame.push(`Inning ${i + 1}: Away: ${currentScore.Away} - Home: ${currentScore.Home}`);
+  }
+  if(homeScore === awayScore) {
+    totalGame.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`); 
+  } else {
+    totalGame.push(`Final Score: Away ${awayScore} - Home ${homeScore}`); 
   }
   return totalGame;
 }
